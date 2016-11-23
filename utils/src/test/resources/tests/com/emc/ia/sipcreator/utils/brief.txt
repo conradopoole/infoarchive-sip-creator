@@ -1,0 +1,7 @@
+java.lang.RuntimeException "In entrypoint."  at tests.com.emc.ia.sipcreator.utils.ExceptionFormatterTestFlow#entryPoint (ExceptionFormatterTestFlow.java:12)
+ > java.lang.RuntimeException "In outer."  at tests.com.emc.ia.sipcreator.utils.ExceptionFormatterTestFlow#outer (ExceptionFormatterTestFlow.java:20)
+ >> java.lang.ArrayIndexOutOfBoundsException "0"  at tests.com.emc.ia.sipcreator.utils.ExceptionFormatterTestFlow#inner (ExceptionFormatterTestFlow.java:25)
+     tests.com.emc.ia.sipcreator.utils.ExceptionFormatterTestFlow.outer(ExceptionFormatterTestFlow.java:18)
+     tests.com.emc.ia.sipcreator.utils.ExceptionFormatterTestFlow.entryPoint(ExceptionFormatterTestFlow.java:10)
+     tests.com.emc.ia.sipcreator.utils.BriefExceptionFormatterTests.formatSampleFlow(BriefExceptionFormatterTests.java:18)
+     tests.com.emc.ia.sipcreator.utils.BriefExceptionFormatterTests.formatSampleFlowReturnBriefSummary(BriefExceptionFormatterTests.java:28)

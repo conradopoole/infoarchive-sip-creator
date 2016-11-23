@@ -1,0 +1,18 @@
+ sql:
+   db: jdbc.sample
+   query: select * from Main where Name in ('A', 'B')
+   subquery:
+      sub:
+         query: select * from Sub where Main = $ID$
+         subquery:
+           subsub:
+              query: select * from Sub where Main = $ID$
+         
+         
+ sqlInvalidSubQuery:
+   db: jdbc.sample
+   query: select * from Main where Name in ('A', 'B')
+   subquery:
+      sub:
+         query: err
+         

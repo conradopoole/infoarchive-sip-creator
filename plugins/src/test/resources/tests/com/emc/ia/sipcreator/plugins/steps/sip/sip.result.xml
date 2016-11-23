@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="myschema">
+<item>
+	<x>1</x>
+	<y>a</y>
+</item>
+<item>
+	<x>2</x>
+	<y>b</y>
+</item>
+</objects>

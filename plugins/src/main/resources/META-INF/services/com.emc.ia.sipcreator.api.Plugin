@@ -1,0 +1,15 @@
+com.emc.ia.sipcreator.plugins.steps.output.EchoStepPlugin
+com.emc.ia.sipcreator.plugins.steps.state.SetVariableStepPlugin
+com.emc.ia.sipcreator.plugins.steps.state.LoadPropertiesPlugin
+com.emc.ia.sipcreator.plugins.uriresolver.DefaultURIResolverPlugin
+com.emc.ia.sipcreator.plugins.steps.flow.NopStepPlugin
+com.emc.ia.sipcreator.plugins.steps.flow.RepeatStepPlugin
+com.emc.ia.sipcreator.plugins.steps.flow.SequenceStepPlugin
+com.emc.ia.sipcreator.plugins.steps.flow.WhenStepPlugin
+com.emc.ia.sipcreator.plugins.digitalobjects.NoContentPlugin
+com.emc.ia.sipcreator.plugins.digitalobjects.SingleContentPlugin
+com.emc.ia.sipcreator.plugins.aiusource.AIUFromModelPlugin
+com.emc.ia.sipcreator.plugins.steps.xml.Model2XMLStepPlugin
+com.emc.ia.sipcreator.plugins.serializers.StringTemplateModelSerializerPlugin
+com.emc.ia.sipcreator.plugins.serializers.BatchModelSerializerPlugin
+com.emc.ia.sipcreator.plugins.steps.sip.CreateSIPStepPlugin

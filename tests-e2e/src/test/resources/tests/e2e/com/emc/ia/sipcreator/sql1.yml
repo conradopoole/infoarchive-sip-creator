@@ -1,0 +1,36 @@
+
+
+init:
+  jdbc.world:
+    jdbc:
+      driver: org.h2.Driver
+      url: jdbc:h2:mem:world;INIT=RUNSCRIPT FROM '${configfolder}/sample.sql'
+
+main: 
+  sip.create:    
+    directory: ${sipsfolder}
+    holding: myholding
+    application: myapp
+    producer: myproducer
+    entity: myentity
+    schema: myschema
+    namespaces: xmlns="myschema"
+    element: objects    
+    maxaius: 1000
+    source:
+      aiuFromModel:
+        models:
+          sql:
+            db: jdbc.world
+            query: select * from Main
+            subquery:
+              sub:
+                query: select * from Sub where Main = $ID$
+                subquery:
+                  subsub:
+                    query: select * from SubSub where Sub = $ID$
+            root: ${configfolder}/samplefiles
+        serializer:
+          stringtemplate:
+              template: ${configfolder}/sql.sample.template.xml 
+  

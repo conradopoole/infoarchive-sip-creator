@@ -1,0 +1,20 @@
+
+vars:
+ - first
+ - $context.var$
+ - third
+
+bools:
+ yes: true
+ no: false
+ unknown: foo
+ blank:
+
+main:
+  a: 1
+  b: 2
+  c: 3
+
+  
+single:
+  onlyOne: 123

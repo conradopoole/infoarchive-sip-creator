@@ -1,0 +1,34 @@
+
+init:
+  xdb.staging:
+    xdb:
+      url: xhive://localhost:9235
+      user: Administrator
+      password: admin
+      db: db
+      
+      
+main:
+  - xdb.library:
+      xdb: xdb.staging
+      library: staging
+  - filecollection:
+      files: ${configfolder}/xdb1.sample.xml
+  - xdb.query: 
+      xdb: xdb.staging
+      query: for \$i in collection(/staging/*) return delete node \$i   
+  - xdb.load: 
+      xdb: xdb.staging
+      library: staging
+  - xdb.query: 
+      xdb: xdb.staging   
+      query: for \$i in /objects/item order by \$i/x return concat(\$i/x,':',\$i/y, '&#10;')
+      processor: 
+        serialize:
+          header: include(${configfolder}/xdb1.header.txt)
+          footer: include(${configfolder}/xdb1.footer.txt)
+          path: ${tempfolder}/result.txt
+  - xdb.query: 
+      xdb: xdb.staging
+      query: for \$i in collection(/staging/*) return delete node \$i 
+    

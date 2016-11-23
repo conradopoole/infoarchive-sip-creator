@@ -1,0 +1,7 @@
+main:
+  - echo: Message
+  - move:
+    from: source
+    to: destination
+  - echo: Done
+  

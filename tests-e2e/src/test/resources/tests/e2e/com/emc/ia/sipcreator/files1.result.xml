@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="myschema">
+<file>
+	<name>file1.txt</name>
+	<size>23</size>
+</file>
+<file>
+	<name>file2.txt</name>
+	<size>30</size>
+</file>
+<file>
+	<name>file3.txt</name>
+	<size>30</size>
+</file>
+</objects>

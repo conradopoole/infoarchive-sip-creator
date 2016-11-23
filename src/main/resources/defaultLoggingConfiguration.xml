@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<property name="MAXSIZE" value="${logging.filesize.max:-10MB}" />
+	<property name="DATEFORMAT" value="yyyy-MM-dd HH:mm:ss.SSS" />
+	<property name="PATTERN" value="%d{${DATEFORMAT}} %level [%thread] %logger{10} - %msg%n" />
+	<property name="LOGFILE_SUFFIX" value=".log" />
+	<property name="LOGFILE_PREFIX" value="sipcreator_" />
+	 <timestamp key="bySecond" datePattern="yyyyMMdd_HHmmss"/>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logging.directory}/${LOGFILE_PREFIX}${logging.batchid}_${bySecond}${LOGFILE_SUFFIX}
+		</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logging.directory}/${LOGFILE_ARCHIVE_DIRECTORY}/${logging.batchid}/${LOGFILE_PREFIX}${logging.batchid}_%d{yyyy-MM-dd}_%d{HH-mm-ss,aux}${LOGFILE_SUFFIX}
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>${MAXSIZE}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<root level="${logging.rootlevel}">
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

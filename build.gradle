@@ -1,0 +1,62 @@
+
+allprojects {
+  apply plugin: 'java'
+  apply plugin: 'eclipse'
+  apply from: rootProject.file('gradle/dependencies.gradle')
+  apply from: rootProject.file('gradle/codequality.gradle')
+  apply from: rootProject.file('gradle/coverage.gradle')
+  
+  repositories {
+	mavenLocal()
+	maven {url 'http://pls-jfrogrepo.lss.emc.com/artifactory/internal'}
+	mavenCentral()
+  }
+}
+
+
+apply plugin: 'application'
+mainClassName = "com.emc.ia.sipcreator.Start"
+
+
+startScripts {
+  unixStartScriptGenerator = new StartScriptGeneratorWithPlugins(unixStartScriptGenerator)
+  windowsStartScriptGenerator = new StartScriptGeneratorWithPlugins(windowsStartScriptGenerator)  
+}
+
+class StartScriptGeneratorWithPlugins implements ScriptGenerator {
+
+  ScriptGenerator delegate;
+  
+  public StartScriptGeneratorWithPlugins(ScriptGenerator delegate) {
+     this.delegate = delegate;
+  }
+
+  void generateScript(JavaAppStartScriptGenerationDetails details, Writer destination) {
+    details.getClasspath().add("ext/*");
+    delegate.generateScript(details,destination);
+  }
+}
+
+task(generateDocumentation, dependsOn: 'doc:classes', type: JavaExec) {
+  def docs = file("$buildDir/docs")
+  outputs.dir docs
+  main = 'com.emc.ia.sipcreator.documentation.Generator'
+  classpath = project('doc').sourceSets.main.runtimeClasspath
+  args docs
+}
+
+classes.dependsOn generateDocumentation
+
+dependencies {
+  compile project(':cli')
+}
+
+distributions {
+  main {
+    contents {
+      from(generateDocumentation) {
+        into "docs"
+      }
+    }
+  }
+}

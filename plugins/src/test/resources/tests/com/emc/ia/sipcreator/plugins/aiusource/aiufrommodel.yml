@@ -1,0 +1,9 @@
+
+
+aius:
+  models: 
+    fromState: models
+  serializer:
+    stringtemplate: template.xml 
+      
+  

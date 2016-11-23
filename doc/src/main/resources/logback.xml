@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+	<property name="DATEFORMAT" value="yyyy-MM-dd HH:mm:ss.SSS" />
+	<property name="PATTERN"
+		value="%d{${DATEFORMAT}} %level [%thread] %logger{10} - %msg%n" />
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${PATTERN}</pattern>
+		</encoder>
+
+	</appender>
+
+	<root level="WARN">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>

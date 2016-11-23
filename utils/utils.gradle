@@ -1,0 +1,9 @@
+
+
+configurations {
+  compile.extendsFrom commonsIo, commonsLang
+}
+
+dependencies {
+  compile project(':api')
+}

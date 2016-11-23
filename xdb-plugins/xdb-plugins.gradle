@@ -1,0 +1,20 @@
+
+configurations {
+  compile.extendsFrom xdbApi
+  testCompile.extendsFrom xdbImpl
+}
+
+
+dependencies {
+  compile project(':api')
+  compile project(':core')
+  compile project(':utils')
+  testCompile project(':test-tools')
+  testCompile project(':xdb-test-tools')
+}
+
+
+
+test {
+  systemProperty "xdb.license", rootProject.file('.xdb.license.txt').getText('UTF-8')
+}

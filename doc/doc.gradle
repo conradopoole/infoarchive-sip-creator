@@ -1,0 +1,9 @@
+
+
+configurations {
+  compile.extendsFrom logImpl
+}
+
+dependencies {
+  compile project(':app')
+}

@@ -1,0 +1,12 @@
+
+
+model2xml:
+  source: 
+    fromState: models
+  serializer:
+    header: <?xml version="1.0" encoding="UTF-8"?><objects>
+    footer:  </objects>
+    stringtemplate: template.xml
+  directory: $context.dir$
+
+  

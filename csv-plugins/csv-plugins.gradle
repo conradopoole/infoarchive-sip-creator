@@ -1,0 +1,12 @@
+
+
+configurations {
+  compile.extendsFrom csv
+}
+
+dependencies {
+  compile project(':api')
+  compile project(':core')
+  compile project(':plugins')
+  testCompile project(':test-tools')
+}

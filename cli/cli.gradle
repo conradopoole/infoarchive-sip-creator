@@ -1,0 +1,11 @@
+
+
+configurations {
+  compile.extendsFrom logImpl, jopt
+}
+
+
+dependencies {
+  compile project(':app')
+  
+}

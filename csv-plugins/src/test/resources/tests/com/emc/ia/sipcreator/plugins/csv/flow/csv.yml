@@ -1,0 +1,7 @@
+
+csv.foreachrow:
+  file: values.csv
+  steps:
+    set: 
+     result: $context.result$$context.row.a$$context.row.b$
+

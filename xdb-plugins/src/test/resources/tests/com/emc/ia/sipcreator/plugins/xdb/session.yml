@@ -1,0 +1,6 @@
+
+xdb:
+  url: xhive://localhost:9235
+  user: Administrator
+  password: admin
+  db: db

@@ -1,0 +1,2 @@
+com.emc.ia.sipcreator.plugins.sql.jdbc.DefaultJdbcSessionProviderPlugin
+com.emc.ia.sipcreator.plugins.sql.modelsource.SQLModelSourcePlugin

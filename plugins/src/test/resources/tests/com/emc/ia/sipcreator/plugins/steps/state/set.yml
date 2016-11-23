@@ -1,0 +1,5 @@
+
+set: 
+  constant: 123
+  variable: $context.name$
+  interpolated: interpo$context.name$lated

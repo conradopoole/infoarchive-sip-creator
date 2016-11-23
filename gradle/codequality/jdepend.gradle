@@ -1,0 +1,21 @@
+apply plugin: 'jdepend'
+
+jdependMain << {
+  failOnCycles(reports)
+}
+
+def failOnCycles(reports) {
+  def error = '';
+  def jdepend = new XmlSlurper().parse(reports.xml.destination)
+  jdepend.Cycles.Package.each { p ->
+    error += '\nCycle from ' + p.@Name
+    p.Package.each { error += "\n-> $it" }
+  }
+  if (!error.isEmpty()) {
+    throw new GradleException('Detected cycle in package dependencies: ' + error)
+  }
+}
+
+jdependTest << {
+  failOnCycles(reports)
+}

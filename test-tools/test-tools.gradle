@@ -1,0 +1,11 @@
+
+
+configurations {
+  compile.extendsFrom xmlunit, logImpl, mockito, junit
+  
+}
+
+dependencies {
+  compile project(':api')
+  compile project(':core')
+}

@@ -1,0 +1,47 @@
+
+init:
+  xdb.staging:
+    xdb:
+      url: xhive://localhost:9235
+      user: Administrator
+      password: admin
+      db: db
+      
+      
+main:
+  xdb.library:
+    xdb: xdb.staging
+    library: staging
+
+  model2xml:
+    source: 
+     csv:
+        file: ${configfolder}/csv1.csv
+    serializer:
+        header: <?xml version="1.0" encoding="UTF-8"?><objects>
+        footer:  </objects>
+        stringtemplate: 
+           template: ${configfolder}/csv1.template.xml 
+    directory: ${tempfolder}       
+  
+  xdb.load: 
+    xdb: xdb.staging
+    library: staging
+
+  sip.create: 
+    directory: ${sipsfolder}   
+    holding: myholding
+    application: myapp
+    producer: myproducer
+    entity: myentity
+    schema: myschema
+    namespaces: xmlns="myschema"
+    maxaius: 1000
+    element: objects
+    source:
+      aiuFromXQuery:
+        query: for \$i in /objects/item return \$i
+        xdb: xdb.staging
+  
+
+      

@@ -1,0 +1,4 @@
+
+
+xdb.library:
+  library: $context.library$

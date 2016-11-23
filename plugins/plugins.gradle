@@ -1,0 +1,12 @@
+
+
+
+configurations {
+  compile.extendsFrom groovy
+}
+
+dependencies {
+  compile project(':api')
+  compile project(':core')
+  testCompile project(':test-tools')
+}

@@ -1,0 +1,11 @@
+<main>
+   <name>$model.NAME$</name>
+$model.sub:{sub |
+   <sub><name>$sub.NAME$</name>
+   
+   $sub.subsub:{subsub |
+   <subsub>$subsub.NAME$</subsub>
+}$
+   </sub>
+}$</main>
+

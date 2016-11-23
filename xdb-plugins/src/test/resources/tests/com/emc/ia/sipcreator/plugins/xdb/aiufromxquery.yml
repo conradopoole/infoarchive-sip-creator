@@ -1,0 +1,4 @@
+
+
+aiuFromXQuery:
+  query: for \$aiu in /$context.root$ return \$aiu

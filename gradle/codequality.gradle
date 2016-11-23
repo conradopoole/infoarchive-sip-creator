@@ -1,0 +1,4 @@
+apply from: rootProject.file('gradle/codequality/checkstyle.gradle')
+apply from: rootProject.file('gradle/codequality/findbugs.gradle')
+apply from: rootProject.file('gradle/codequality/pmd.gradle')
+apply from: rootProject.file('gradle/codequality/jdepend.gradle')

@@ -1,0 +1,8 @@
+
+
+filecollection:
+  files: 
+    - $context.directory$/a.txt
+    - $context.directory$/b.txt
+    - $context.directory$/c.txt
+  

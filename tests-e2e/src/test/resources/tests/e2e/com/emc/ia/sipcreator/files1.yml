@@ -1,0 +1,21 @@
+
+main: 
+  sip.create:    
+    directory: ${sipsfolder}
+    holding: myholding
+    application: myapp
+    producer: myproducer
+    entity: myentity
+    schema: myschema
+    namespaces: xmlns="myschema"
+    maxaius: 1000
+    element: objects
+    source:
+      aiuFromModel:
+        models:
+          files:
+            directory: ${configfolder}/samplefiles
+        serializer:
+          stringtemplate:
+              template: ${configfolder}/files1.template.xml 
+  

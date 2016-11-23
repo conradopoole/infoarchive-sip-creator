@@ -1,0 +1,8 @@
+com.emc.ia.sipcreator.plugins.xdb.XDBCreateLibraryStepPlugin
+com.emc.ia.sipcreator.plugins.xdb.XDBLoadStepPlugin
+com.emc.ia.sipcreator.plugins.xdb.XDBQueryResultProcessorSerializePlugin
+com.emc.ia.sipcreator.plugins.xdb.XDBQueryResultProcessorTraversePlugin
+com.emc.ia.sipcreator.plugins.xdb.XDBQueryStepPlugin
+com.emc.ia.sipcreator.plugins.xdb.XDBSessionProviderPlugin
+com.emc.ia.sipcreator.plugins.xdb.AiuFromXQueryPlugin
+

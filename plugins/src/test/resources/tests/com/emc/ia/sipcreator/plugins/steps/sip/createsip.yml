@@ -1,0 +1,16 @@
+  sip.create: 
+    directory: $context.dir$
+    holding: myholding
+    application: myapp
+    producer: myproducer
+    entity: myentity
+    schema: myschema
+    namespaces: xmlns="myschema"
+    element: objects
+    maxaius: 10
+    source:
+      aiuFromModel:
+        models: 
+          fromState: models
+        serializer:
+          stringtemplate: template.xml 

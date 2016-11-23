@@ -1,0 +1,6 @@
+
+repeat:
+  times: 3
+  steps:
+    set: 
+     result: $context.result$$context.i$

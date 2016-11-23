@@ -1,0 +1,6 @@
+  apply plugin: 'pmd'
+  pmd {
+    ruleSetFiles = rootProject.files('gradle/codequality/config/pmd.xml')
+    toolVersion = '5.4.1'
+    ignoreFailures = false
+  }

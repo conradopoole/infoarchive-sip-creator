@@ -1,0 +1,15 @@
+jdbc:
+  driver: org.h2.Driver
+  url: jdbc:h2:mem:world
+
+  
+jdbcUnknown:
+  driver: no.such.Driver
+  url: jdbc:h2:mem:world
+
+  
+jdbcInvalidCred:
+  driver: org.h2.Driver
+  url: jdbc:h2:mem:world
+  user: foo
+  password: bar

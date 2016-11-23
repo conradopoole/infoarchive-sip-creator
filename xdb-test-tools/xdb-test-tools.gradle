@@ -1,0 +1,4 @@
+
+configurations {
+  compile.extendsFrom xdbApi, xdbImpl, commonsIo, commonsLang
+}

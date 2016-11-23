@@ -1,0 +1,10 @@
+
+
+configurations {
+  compile.extendsFrom log, stringtemplate, commonsLang, yaml
+}
+
+dependencies {
+  compile project(':api')
+  compile project(':utils')
+}

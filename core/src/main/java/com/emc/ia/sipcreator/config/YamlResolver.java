@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2016 EMC Corporation. All Rights Reserved.
+ */
+package com.emc.ia.sipcreator.config;
+
+import org.yaml.snakeyaml.nodes.Tag;
+import org.yaml.snakeyaml.resolver.Resolver;
+
+public class YamlResolver extends Resolver {
+
+  @Override
+  protected void addImplicitResolvers() {
+    // addImplicitResolver(Tag.BOOL, BOOL, "yYnNtTfFoO");
+    // addImplicitResolver(Tag.INT, INT, "-+0123456789");
+    // addImplicitResolver(Tag.FLOAT, FLOAT, "-+0123456789.");
+    addImplicitResolver(Tag.MERGE, MERGE, "<");
+    addImplicitResolver(Tag.NULL, NULL, "~nN\0");
+    addImplicitResolver(Tag.NULL, EMPTY, null);
+    // addImplicitResolver(Tags.TIMESTAMP, TIMESTAMP, "0123456789");
+    // addImplicitResolver(Tag.VALUE, VALUE, "=");
+  }
+}

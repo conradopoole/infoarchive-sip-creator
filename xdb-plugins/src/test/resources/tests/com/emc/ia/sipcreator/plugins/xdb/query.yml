@@ -1,0 +1,16 @@
+
+
+
+ query:
+   query: for \$i in /objects/item order by \$i/x return concat(\$i/x,':',\$i/y, '&#10;')
+   processor: 
+     serialize:
+       header: |+
+         Header
+         
+       footer: |+
+         Footer
+         
+       path: $context.file$
+       
+       

@@ -1,0 +1,10 @@
+
+configurations {
+  testCompile.extendsFrom h2
+}
+
+dependencies {
+  compile project(':api')
+  compile project(':core')
+  testCompile project(':test-tools')
+}
