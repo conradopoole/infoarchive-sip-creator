@@ -9,8 +9,13 @@ allprojects {
   
   repositories {
 	mavenLocal()
-	maven {url = iaSipCreatorMavenRepo}
+	if(hasProperty('iaSipCreatorMavenRepo') != null) {
+	  maven {url = iaSipCreatorMavenRepo}
+	}
 	mavenCentral()
+	flatDir {
+        dirs 'lib'
+    }
   }
 }
 
