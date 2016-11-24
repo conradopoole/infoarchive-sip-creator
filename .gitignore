@@ -12,7 +12,7 @@
 .idea/
 .project
 .settings/
-.xdb.license.txt
+.xdb
 bin/
 build/
 classes/
