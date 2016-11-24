@@ -9,7 +9,7 @@ allprojects {
   
   repositories {
 	mavenLocal()
-	maven {url = mavenRepo}
+	maven {url = iaSipCreatorMavenRepo}
 	mavenCentral()
   }
 }
