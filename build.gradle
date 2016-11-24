@@ -64,5 +64,5 @@ distributions {
 
 
 def useXdb() {
- return !project.hasProperty('noxdb');
+ return project.hasProperty('xdb');
 }
