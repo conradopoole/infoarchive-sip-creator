@@ -1,3 +1,4 @@
+defaultTasks 'build'
 
 allprojects {
   apply plugin: 'java'
