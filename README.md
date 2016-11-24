@@ -32,15 +32,7 @@ those modules but you cannot use any module requiring xDB, such as using xDB as 
 
 To build with xDB you need to: 
 
-* Have xdb-api and xdb-impl jars in a repository of your own. 
-
-** If you have access to a maven repository with those jars you can just add a property to gradle.properties in gradle user home called 'iaSipCreatorMavenRepo' and it will be automatically picked up.
- 
-** If you don't have access to such a maven repository you can either
-
-*** install them in your local maven repository
-
-*** Or put them in a lib folder in the project root.
+* Have xdb-api and xdb-impl jars in a repository of your own. If you have access to a maven repository with those jars you can just add a property to gradle.properties in gradle user home called 'iaSipCreatorMavenRepo' and it will be automatically picked up. If you don't have access to such a maven repository you can either install them in your local maven repository or  put them in a lib folder in the project root.
  
 * Have a license to xDB placed in a text file called .xdb.license.txt in the root project
 
