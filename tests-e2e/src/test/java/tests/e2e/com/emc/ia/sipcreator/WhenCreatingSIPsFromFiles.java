@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import com.emc.ia.sipcreator.testing.e2e.E2ETestCase;
+
 public class WhenCreatingSIPsFromFiles extends E2ETestCase {
 
   @Test

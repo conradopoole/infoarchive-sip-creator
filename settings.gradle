@@ -9,9 +9,12 @@ include 'sql-plugins'
 include 'csv-plugins'
 include 'filesystem-plugins'
 include 'tests-e2e'
+include 'doc'
+
 include 'xdb-test-tools'
 include 'xdb-plugins'
-include 'doc'
+include 'xdb-tests-e2e'
+
 
 rootProject.name = 'sipcreator'
 

@@ -5,5 +5,7 @@ dependencies {
   compile project(':csv-plugins')
   compile project(':filesystem-plugins')
   compile project(':sql-plugins')
-  compile project(':xdb-plugins')
+  if(useXdb()) {
+    compile project(':xdb-plugins')
+  }
 }

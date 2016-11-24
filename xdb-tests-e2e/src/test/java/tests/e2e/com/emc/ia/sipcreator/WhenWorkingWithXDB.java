@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.junit.ClassRule;
 import org.junit.Test;
 
+import com.emc.ia.sipcreator.testing.e2e.E2ETestCase;
 import com.emc.ia.sipcreator.testing.xdb.TemporaryXDBResource;
 
 public class WhenWorkingWithXDB extends E2ETestCase {

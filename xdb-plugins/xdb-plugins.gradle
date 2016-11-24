@@ -18,3 +18,6 @@ dependencies {
 test {
   systemProperty "xdb.license", rootProject.file('.xdb.license.txt').getText('UTF-8')
 }
+
+
+project.tasks.each { it.onlyIf { useXdb() }}

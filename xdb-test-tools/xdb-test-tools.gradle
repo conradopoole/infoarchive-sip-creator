@@ -2,3 +2,7 @@
 configurations {
   compile.extendsFrom xdbApi, xdbImpl, commonsIo, commonsLang
 }
+
+
+project.tasks.each { it.onlyIf { useXdb() }}
+

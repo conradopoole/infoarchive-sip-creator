@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 EMC Corporation. All Rights Reserved.
  */
-package tests.e2e.com.emc.ia.sipcreator;
+package com.emc.ia.sipcreator.testing.e2e;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
