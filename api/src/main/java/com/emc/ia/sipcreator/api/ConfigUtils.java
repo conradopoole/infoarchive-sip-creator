@@ -54,4 +54,6 @@ public interface ConfigUtils {
   String getOptionalString(PluginContext context, String id, String defaultValue);
 
   String getExternalResource(String resourcePath) throws IOException;
+
+  long getOptionalLong(PluginContext context, String param, long l);
 }

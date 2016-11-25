@@ -217,6 +217,18 @@ public class ConfigUtilsImplTests {
     assertTrue(text.contains(String.valueOf(runtimeVariableFactory)));
   }
 
+  @Test
+  public void getOptionalLongMissingReturnsDefault() {
+    PluginContextImpl context = new PluginContextImpl(appState, conf1, conf1);
+    assertEquals(1234L, utils.getOptionalLong(context, "missing", 1234L));
+  }
+
+  @Test
+  public void getOptionalLongPresentReturnsValue() {
+    PluginContextImpl context = new PluginContextImpl(appState, conf1, conf1);
+    assertEquals(1111L, utils.getOptionalLong(context, "long", 1234L));
+  }
+
   private Config config(String path) {
     try {
       return parser.parse(loader.apply(path));

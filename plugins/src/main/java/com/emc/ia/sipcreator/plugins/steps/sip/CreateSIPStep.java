@@ -3,12 +3,9 @@
  */
 package com.emc.ia.sipcreator.plugins.steps.sip;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import com.emc.ia.sdk.sip.assembly.BatchSipAssembler;
 import com.emc.ia.sdk.sip.assembly.FileGenerationMetrics;
@@ -16,6 +13,7 @@ import com.emc.ia.sipcreator.api.AIU;
 import com.emc.ia.sipcreator.api.AIUSource;
 import com.emc.ia.sipcreator.api.RuntimeState;
 import com.emc.ia.sipcreator.api.Step;
+import com.emc.ia.sipcreator.utils.MutableFilesCollection;
 
 public class CreateSIPStep implements Step {
 
@@ -41,11 +39,10 @@ public class CreateSIPStep implements Step {
 
       Collection<FileGenerationMetrics> sipsMetrics = assembler.getSipsMetrics();
 
-      List<File> files = new ArrayList<File>();
+      MutableFilesCollection files = new MutableFilesCollection();
 
       for (FileGenerationMetrics fileMetrics : sipsMetrics) {
         files.add(fileMetrics.getFile());
-//System.err.println(fileMetrics.getFile().getAbsolutePath() + ": " + fileMetrics.getMetrics());
       }
 
       state.set(resultVariable, files);

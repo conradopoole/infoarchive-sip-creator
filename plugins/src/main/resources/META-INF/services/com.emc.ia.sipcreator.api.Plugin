@@ -13,3 +13,4 @@ com.emc.ia.sipcreator.plugins.steps.xml.Model2XMLStepPlugin
 com.emc.ia.sipcreator.plugins.serializers.StringTemplateModelSerializerPlugin
 com.emc.ia.sipcreator.plugins.serializers.BatchModelSerializerPlugin
 com.emc.ia.sipcreator.plugins.steps.sip.CreateSIPStepPlugin
+com.emc.ia.sipcreator.plugins.steps.sip.SIPSegmentationStrategyMaxAiusPlugin

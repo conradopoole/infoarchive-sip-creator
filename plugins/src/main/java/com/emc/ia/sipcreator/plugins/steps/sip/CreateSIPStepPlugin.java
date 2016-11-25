@@ -50,8 +50,6 @@ public class CreateSIPStepPlugin extends AbstractStepPlugin {
     final RuntimeVariable namespaceVar = configUtils.getRuntimeVariable(context, "namespaces");
     final RuntimeVariable rootElementVar = configUtils.getRuntimeVariable(context, "element");
 
-    final RuntimeVariable maxAIUsVar = configUtils.getRuntimeVariable(context, "maxaius");
-
     BatchSipAssemblerFactory factory = new BatchSipAssemblerFactory() {
 
       @Override
@@ -75,18 +73,26 @@ public class CreateSIPStepPlugin extends AbstractStepPlugin {
         SipAssembler<AIU> sipAssembler =
             SipAssembler.forPdiAndContent(prototype, pdiAssembler, new AIUDigitalObjectsExtractor());
 
-        int maxAIUs = Integer.parseInt(maxAIUsVar.getValue(state));
+        SipSegmentationStrategy<AIU> segmentationStrategy = createSegmentationStrategy(configUtils, context);
 
         String directory = sipDirectory.getValue(state);
         BatchSipAssembler<AIU> assembler =
-            new BatchSipAssembler<>(sipAssembler, SipSegmentationStrategy.byMaxAius(maxAIUs), new File(directory));
+            new BatchSipAssembler<>(sipAssembler, segmentationStrategy, new File(directory));
 
         return assembler;
       }
+
     };
 
     AIUSource aiuSource = configUtils.newObject(context, "source", AIUSource.class);
     return new CreateSIPStep(factory, aiuSource, "files");
+  }
+
+  @SuppressWarnings("unchecked")
+  private SipSegmentationStrategy<AIU> createSegmentationStrategy(ConfigUtils configUtils, PluginContext context) {
+    return (SipSegmentationStrategy<AIU>)configUtils
+      .newOptionalObject(context, "segmentation", SipSegmentationStrategy.class)
+      .orElse(SipSegmentationStrategy.byMaxAius(100000));
   }
 
 }

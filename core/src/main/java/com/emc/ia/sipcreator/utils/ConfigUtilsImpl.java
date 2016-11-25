@@ -231,4 +231,14 @@ public class ConfigUtilsImpl implements ConfigUtils {
     }
   }
 
+  @Override
+  public long getOptionalLong(PluginContext context, String param, long defaultValue) {
+    String value = getString(context, param);
+    if (value == null) {
+      return defaultValue;
+    } else {
+      return Long.parseLong(value);
+    }
+  }
+
 }
