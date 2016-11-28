@@ -22,7 +22,10 @@ import org.slf4j.LoggerFactory;
 
 import com.emc.ia.sipcreator.app.CommandLineOptions;
 import com.emc.ia.sipcreator.app.SipCreatorAppFactory;
+import com.emc.ia.sipcreator.exceptions.ConfigurationException;
 import com.emc.ia.sipcreator.spi.Result;
+import com.emc.ia.sipcreator.spi.ReturnCodes;
+import com.emc.ia.sipcreator.utils.ConstantCallable;
 import com.emc.ia.sipcreator.utils.Fmt;
 
 import ch.qos.logback.classic.LoggerContext;
@@ -83,8 +86,12 @@ public class DefaultCommandLineInitiator {
       cfg.setSettingsFile(asFile(settingsPath));
       cfg.setSettings(asSettings(properties));
       cfg.setBatchId(batchId);
-      return SipCreatorAppFactory.fromOptions(cfg);
+      return createApp(cfg);
     }
+  }
+
+  private Callable<Result> createApp(CommandLineOptions cfg) {
+      return SipCreatorAppFactory.fromOptions(cfg);
   }
 
   private void welcomeMessage(OptionSet options, String batchId) {

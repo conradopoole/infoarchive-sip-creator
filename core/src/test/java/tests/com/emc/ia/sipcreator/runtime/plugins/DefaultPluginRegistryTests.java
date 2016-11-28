@@ -35,6 +35,8 @@ public class DefaultPluginRegistryTests {
 
   private static final String CONFIG_NAME = "foo";
 
+  private static final String PATH = null;
+
   private final PluginRegistry registry = new DefaultPluginRegistry();
 
   private ApplicationState appState;
@@ -49,20 +51,20 @@ public class DefaultPluginRegistryTests {
   @Test
   public void createTest1PluginReturnInstance() {
     String text = RandomStringUtils.random(32);
-    Config config = new ConfigImpl(CONFIG_NAME, Collections.singletonMap("text", text));
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, Collections.singletonMap("text", text));
     assertEquals(text, registry.create(String.class, TEST1_PLUGIN_NAME, PluginUtils.context(appState, config)));
   }
 
   @Test
   public void createTest1PluginWithoutTypeReturnInstance() {
     String text = RandomStringUtils.random(32);
-    Config config = new ConfigImpl(CONFIG_NAME, Collections.singletonMap("text", text));
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, Collections.singletonMap("text", text));
     assertEquals(text, registry.create(null, TEST1_PLUGIN_NAME, PluginUtils.context(appState, config)));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void createTest1PluginWithoutConfThrowException() {
-    Config config = new ConfigImpl(CONFIG_NAME, null);
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, null);
     registry.create(null, TEST1_PLUGIN_NAME, PluginUtils.context(appState, config));
   }
 
@@ -70,13 +72,13 @@ public class DefaultPluginRegistryTests {
   public void createTest2StringPluginReturnInstance() {
     String text = RandomStringUtils.randomAlphanumeric(32);
     String expected = StringUtils.reverse(text);
-    Config config = new ConfigImpl(CONFIG_NAME, Collections.singletonMap("text", text));
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, Collections.singletonMap("text", text));
     assertEquals(expected, registry.create(String.class, TEST2_PLUGIN_NAME, PluginUtils.context(appState, config)));
   }
 
   @Test
   public void createTest2ObjectPluginReturnInstance() {
-    Config config = new ConfigImpl(CONFIG_NAME, CONFIG_NAME);
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, CONFIG_NAME);
     Object result = registry.create(Object.class, TEST2_PLUGIN_NAME, PluginUtils.context(appState, config));
     assertNotNull(result);
     assertEquals(Object.class, result.getClass());
@@ -84,7 +86,7 @@ public class DefaultPluginRegistryTests {
 
   @Test(expected = IllegalArgumentException.class)
   public void createTest2ObjectNullInstanceThrowException() {
-    Config config = new ConfigImpl(CONFIG_NAME, null);
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, null);
     Object result = registry.create(Object.class, TEST2_PLUGIN_NAME, PluginUtils.context(appState, config));
     assertNotNull(result);
     assertEquals(Object.class, result.getClass());
@@ -103,13 +105,13 @@ public class DefaultPluginRegistryTests {
 
   @Test(expected = IllegalArgumentException.class)
   public void createNoSuchPluginThrowException() {
-    Config config = new ConfigImpl(CONFIG_NAME, null);
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, null);
     registry.create(null, "noSuchPlugin", PluginUtils.context(appState, config));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void createAmbigiousThrowException() {
-    Config config = new ConfigImpl(CONFIG_NAME, null);
+    Config config = new ConfigImpl(PATH, CONFIG_NAME, null);
     registry.create(null, TEST2_PLUGIN_NAME, PluginUtils.context(appState, config));
   }
 

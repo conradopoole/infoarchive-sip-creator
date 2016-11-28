@@ -22,7 +22,7 @@ public class YamlConfigParser implements ConfigParser {
 
     Map map = (Map)yaml.load(text);
 
-    ConfigImpl conf = new ConfigImpl("root", map);
+    ConfigImpl conf = new ConfigImpl("", "", map);
 
     return conf;
   }

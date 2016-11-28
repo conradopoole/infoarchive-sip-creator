@@ -39,13 +39,13 @@ public class ConfigNameIsNotOneOfTests {
 
   @Test
   public void testNameNotPresentReturnTrue() {
-    Config config = new ConfigImpl("notPresent", null);
+    Config config = new ConfigImpl("", "notPresent", null);
     assertTrue(pred.test(config));
   }
 
   @Test
   public void testNamePresentReturnFalse() {
-    Config config = new ConfigImpl(name1, null);
+    Config config = new ConfigImpl("", name1, null);
     assertFalse(pred.test(config));
   }
 

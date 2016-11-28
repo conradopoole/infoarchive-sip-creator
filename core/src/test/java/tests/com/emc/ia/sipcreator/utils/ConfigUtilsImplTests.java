@@ -30,6 +30,7 @@ import com.emc.ia.sipcreator.api.RuntimeVariableFactory;
 import com.emc.ia.sipcreator.config.ConfigImpl;
 import com.emc.ia.sipcreator.config.ConfigParser;
 import com.emc.ia.sipcreator.config.YamlConfigParser;
+import com.emc.ia.sipcreator.exceptions.ConfigurationException;
 import com.emc.ia.sipcreator.impl.RuntimeVariableFactoryImpl;
 import com.emc.ia.sipcreator.runtime.ApplicationState;
 import com.emc.ia.sipcreator.runtime.plugins.PluginContextImpl;
@@ -96,7 +97,7 @@ public class ConfigUtilsImplTests {
     assertEquals("1", config.getValue());
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = ConfigurationException.class)
   public void getGroupPluginContextGroupNotExistingThrowException() {
     PluginContextImpl context = new PluginContextImpl(appState, conf1, utils.getGroup(conf1, MAIN_ID));
     utils.getGroup(context, "d");
@@ -204,9 +205,9 @@ public class ConfigUtilsImplTests {
     String name3 = RandomStringUtils.random(32);
     Predicate<Config> pred = utils.groupSelectorFirstNot(name1, name2);
 
-    assertFalse(pred.test(new ConfigImpl(name1, "")));
-    assertFalse(pred.test(new ConfigImpl(name2, "")));
-    assertTrue(pred.test(new ConfigImpl(name3, "")));
+    assertFalse(pred.test(new ConfigImpl("", name1, "")));
+    assertFalse(pred.test(new ConfigImpl("", name2, "")));
+    assertTrue(pred.test(new ConfigImpl("", name3, "")));
   }
 
   @Test

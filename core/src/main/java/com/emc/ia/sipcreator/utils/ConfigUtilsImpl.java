@@ -21,6 +21,8 @@ import com.emc.ia.sipcreator.api.ConfigUtils;
 import com.emc.ia.sipcreator.api.PluginContext;
 import com.emc.ia.sipcreator.api.RuntimeVariable;
 import com.emc.ia.sipcreator.api.RuntimeVariableFactory;
+import com.emc.ia.sipcreator.config.ConfigImpl;
+import com.emc.ia.sipcreator.exceptions.ConfigurationException;
 
 public class ConfigUtilsImpl implements ConfigUtils {
 
@@ -63,7 +65,8 @@ public class ConfigUtilsImpl implements ConfigUtils {
   public Config getGroup(Config parent, String id) {
     Config config = getOptionalGroup(parent, id);
     if (config == null) {
-      throw new IllegalArgumentException("No such group " + id);
+      throw new ConfigurationException("Expected configuration group " + id + " at " + ((ConfigImpl)parent).getPath());
+      // throw new IllegalArgumentException("No such group " + id);
     } else {
       return config;
     }

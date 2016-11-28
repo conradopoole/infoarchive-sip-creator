@@ -13,8 +13,10 @@ public class ConfigImpl implements Config {
 
   private final String name;
   private final Object value;
+  private final String path;
 
-  public ConfigImpl(String name, Object value) {
+  public ConfigImpl(String path, String name, Object value) {
+    this.path = path;
     this.name = name;
     this.value = value;
   }
@@ -45,7 +47,7 @@ public class ConfigImpl implements Config {
 
       List<Config> configs = new ArrayList<Config>();
       for (Map.Entry<?, ?> entry : map.entrySet()) {
-        configs.add(new ConfigImpl(String.valueOf(entry.getKey()), entry.getValue()));
+        configs.add(new ConfigImpl(getPath(), String.valueOf(entry.getKey()), entry.getValue()));
       }
       return configs;
     } else if (value instanceof List) {
@@ -60,9 +62,9 @@ public class ConfigImpl implements Config {
               .iterator()
               .next()
               .toString();
-            configs.add(new ConfigImpl(keyName, map.get(keyName)));
+            configs.add(new ConfigImpl(getPath(), keyName, map.get(keyName)));
           } else {
-            configs.add(new ConfigImpl("", map));
+            configs.add(new ConfigImpl(getPath(), "", map));
           }
         } else {
           throw new IllegalArgumentException("No child groups. List.");
@@ -84,6 +86,10 @@ public class ConfigImpl implements Config {
   @Override
   public boolean hasValue() {
     return value != null;
+  }
+
+  public String getPath() {
+    return path + "/" + name;
   }
 
 }
