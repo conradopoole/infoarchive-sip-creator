@@ -1,5 +1,7 @@
+
 dependencies {
   compile rootProject
+  testCompile project(':xdb-plugins')  
   testCompile project(':xdb-test-tools')  
   testCompile project(':tests-e2e')  
   testCompile project(':test-tools')  

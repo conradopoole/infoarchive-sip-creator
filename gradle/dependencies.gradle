@@ -33,8 +33,13 @@
 	guava group: 'com.google.guava', name: 'guava', version: '20.0'
 	stringtemplate group: 'org.antlr', name: 'stringtemplate', version: '4.0.2'
 	
-	xdbApi group: 'com.xhive', name: 'xdb-api', version: '11.0.1'
-	xdbImpl group: 'com.xhive', name: 'xdb-impl', version: '11.0.1'
+	if(rootProject.file("libs/xdb").exists()) {
+		xdbApi  fileTree(dir: rootProject.file("libs/xdb"), include: 'xhive-api.jar')
+		xdbImpl fileTree(dir: rootProject.file("libs/xdb"), include: '*.jar', , exclude: 'slf4j-jdk14.jar')
+	} else {
+	  xdbApi group: 'com.xhive', name: 'xdb-api', version: '11.0.2'
+	  xdbImpl group: 'com.xhive', name: 'xdb-impl', version: '11.0.2'
+	}
 	
 	yaml group: 'org.yaml', name: 'snakeyaml', version: '1.16'
 	csv group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
