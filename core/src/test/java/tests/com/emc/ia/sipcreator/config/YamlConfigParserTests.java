@@ -28,7 +28,7 @@ public class YamlConfigParserTests {
         parser.parse(new TextResourceLoader(new File("src/test/resources/" + StringUtils.replace(getClass().getPackage()
           .getName(), ".", "/"))).apply("conf1.yml"));
 
-    assertEquals("root", config.getName());
+    assertEquals("", config.getName());
     assertTrue(config.isCompound());
     assertEquals(1, config.getChildGroups()
       .size());
@@ -56,7 +56,7 @@ public class YamlConfigParserTests {
         parser.parse(new TextResourceLoader(new File("src/test/resources/" + StringUtils.replace(getClass().getPackage()
           .getName(), ".", "/"))).apply("conf2.yml"));
 
-    assertEquals("root", config.getName());
+    assertEquals("", config.getName());
     assertTrue(config.isCompound());
     assertEquals(1, config.getChildGroups()
       .size());

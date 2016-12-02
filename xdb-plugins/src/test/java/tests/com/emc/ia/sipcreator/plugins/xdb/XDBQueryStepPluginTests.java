@@ -47,7 +47,7 @@ public class XDBQueryStepPluginTests extends XDBTestBase {
     PluginContext providerContext = context("session.yml", "xdb");
     XDBSessionProvider sessionProvider = newInstance(XDBSessionProvider.class, "xdb", providerContext);
 
-        PluginContext context = context("query.yml", "query", x -> x.setObject("xdb.default", sessionProvider));
+    PluginContext context = context("query.yml", "query", x -> x.setObject("xdb.default", sessionProvider));
 
     Step step = newInstance(Step.class, "xdb.query", context);
 

@@ -29,7 +29,8 @@ public class SIPSegmentationStrategyMaxAiusPlugin extends AbstractPluginImpl<Sip
 
   @Override
   public SipSegmentationStrategy<AIU> create(PluginContext context) {
-    long maxAiusPerSip = context.configUtils().getOptionalLong(context, PARAM_COUNT, 100000L);
+    long maxAiusPerSip = context.configUtils()
+      .getOptionalLong(context, PARAM_COUNT, 100000L);
     return SipSegmentationStrategy.byMaxAius(maxAiusPerSip);
   }
 

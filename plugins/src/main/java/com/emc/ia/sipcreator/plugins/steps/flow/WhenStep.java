@@ -3,17 +3,15 @@
  */
 package com.emc.ia.sipcreator.plugins.steps.flow;
 
-import java.util.function.Predicate;
-
 import com.emc.ia.sipcreator.api.RuntimeState;
 import com.emc.ia.sipcreator.api.Step;
 
 public class WhenStep implements Step {
 
   private final Step continuation;
-  private final Predicate<RuntimeState> condition;
+  private final RuntimeCondition condition;
 
-  public WhenStep(Predicate<RuntimeState> condition, Step continuation) {
+  public WhenStep(RuntimeCondition condition, Step continuation) {
     this.condition = condition;
     this.continuation = continuation;
   }

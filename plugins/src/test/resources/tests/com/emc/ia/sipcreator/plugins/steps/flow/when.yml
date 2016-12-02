@@ -1,6 +1,6 @@
 
 when:
-  test: context.result == 'Do it'
+  groovy: test { it.result == 'Do it' }
   steps:
     set: 
      result: Did it

@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.emc.ia.sipcreator.api.PluginContext;
 import com.emc.ia.sipcreator.api.RuntimeState;
 import com.emc.ia.sipcreator.api.Step;
+import com.emc.ia.sipcreator.plugins.steps.flow.RuntimeCondition;
 import com.emc.ia.sipcreator.plugins.testing.PluginChecker;
 import com.emc.ia.sipcreator.plugins.testing.PluginTestBase;
 
@@ -25,7 +26,7 @@ public class WhenStepTests extends PluginTestBase {
     chk.name(WHEN);
     chk.type(Step.class);
     chk.description("Performs a set of steps only if a condition is fulfilled.");
-    chk.param("test", String.class, "The condition expression");
+    chk.param("*", RuntimeCondition.class, "The condition plugin");
     chk.param("steps", Step.class, "The steps that should be repeated.");
   }
 

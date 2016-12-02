@@ -90,8 +90,7 @@ public class CreateSIPStepPlugin extends AbstractStepPlugin {
 
   @SuppressWarnings("unchecked")
   private SipSegmentationStrategy<AIU> createSegmentationStrategy(ConfigUtils configUtils, PluginContext context) {
-    return (SipSegmentationStrategy<AIU>)configUtils
-      .newOptionalObject(context, "segmentation", SipSegmentationStrategy.class)
+    return configUtils.newOptionalObject(context, "segmentation", SipSegmentationStrategy.class)
       .orElse(SipSegmentationStrategy.byMaxAius(100000));
   }
 
