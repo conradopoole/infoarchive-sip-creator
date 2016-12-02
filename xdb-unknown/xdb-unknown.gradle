@@ -1,0 +1,14 @@
+gradle.taskGraph.whenReady { graph ->
+  ant.input(message: 'Do you want to use xDB functionality?', validargs: 'y,n', addproperty: 'useXdb')
+  def useXdb = ant.useXdb == 'y'
+  if (useXdb) {
+    ant.input(message: 'xDB license key?', addproperty: 'xdbLicenseKey')
+    rootProject.file('.xdb').text = """include = true
+license = $ant.xdbLicenseKey
+"""
+    logger.quiet 'Initial setup complete. Please run the build again.'
+    throw new BuildCancelledException()
+  } else {
+    rootProject.file('.xdb').text = 'include = false'
+  }
+}

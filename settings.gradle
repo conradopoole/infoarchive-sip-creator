@@ -11,17 +11,28 @@ include 'filesystem-plugins'
 include 'tests-e2e'
 include 'doc'
 
-include 'xdb-test-tools'
-include 'xdb-plugins'
-include 'xdb-tests-e2e'
+def xdbPropertiesFile = new File('.xdb')
+if (xdbPropertiesFile.isFile()) {
+  Properties xdbProperties = new Properties()
+  xdbPropertiesFile.withInputStream { input ->
+    xdbProperties.load(input)
+  }
+  if (Boolean.parseBoolean(xdbProperties.getProperty('include', 'false'))) {
+    include 'xdb-test-tools'
+    include 'xdb-plugins'
+    include 'xdb-tests-e2e'
+  }
+} else {
+  include 'xdb-unknown'
+}
 
 
 rootProject.name = 'sipcreator'
 
 // Rename build files to the name of the sub-project.
 def rename(project) {
-    project.buildFileName = project.name + ".gradle"
-    project.children.each {rename(it)}
+  project.buildFileName = project.name + ".gradle"
+  project.children.each { rename it }
 }
-rootProject.children.each{rename(it)}
 
+rootProject.children.each { rename it }

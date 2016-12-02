@@ -1,4 +1,3 @@
-
 configurations {
   compile.extendsFrom xdbApi
   testCompile.extendsFrom xdbImpl
@@ -14,10 +13,11 @@ dependencies {
 }
 
 
-
 test {
-  systemProperty "xdb.license", rootProject.file('.xdb.license.txt').getText('UTF-8')
+  def xdbPropertiesFile = rootProject.file('.xdb')
+  Properties xdbProperties = new Properties()
+  xdbPropertiesFile.withInputStream { input ->
+    xdbProperties.load(input)
+  }
+  systemProperty "xdb.license", xdbProperties.getProperty('license', '')
 }
-
-
-project.tasks.each { it.onlyIf { useXdb() }}
