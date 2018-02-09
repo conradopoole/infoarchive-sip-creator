@@ -8,6 +8,7 @@ include 'test-tools'
 include 'sql-plugins'
 include 'csv-plugins'
 include 'filesystem-plugins'
+include 'filesystem-plugin-enrichers'
 include 'tests-e2e'
 include 'doc'
 

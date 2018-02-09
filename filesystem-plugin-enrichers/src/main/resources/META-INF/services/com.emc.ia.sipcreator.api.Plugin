@@ -1,0 +1,4 @@
+com.emc.ia.sipcreator.plugins.filesystem.enrichers.PosixEnricherPlugin
+com.emc.ia.sipcreator.plugins.filesystem.enrichers.BasicAttributesEnricherPlugin
+com.emc.ia.sipcreator.plugins.filesystem.enrichers.AclAttributesEnricherPlugin
+com.emc.ia.sipcreator.plugins.filesystem.enrichers.ContentHashEnricherPlugin

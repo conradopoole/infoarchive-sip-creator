@@ -35,7 +35,7 @@ class StartScriptGeneratorWithPlugins implements ScriptGenerator {
   }
 
   void generateScript(JavaAppStartScriptGenerationDetails details, Writer destination) {
-    details.getClasspath().add("ext/*");
+    details.getClasspath().add("dedup/*");
     delegate.generateScript(details,destination);
   }
 }
